@@ -1,0 +1,17 @@
+<body>
+    <div class="welcome">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+            messages %}
+            <p style="color: green"><b>{{msg}}</b></p>
+            {% endfor %} {% endif %} {% endwith %}
+        <h1>Welcome to the WEB-DIARY</h1>
+        <p>With this Web-Application you can:<br>
+           - Log In and Register online<br>
+           - Create you own web-diary<br>
+           - Update you own entries<br>
+           - Delete your own entries<br>
+           - Look at the latest news<br>
+           - Observe weather forecast<br></p>
+        </p>  
+    </div>
+</body>

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template, redirect, url_for, session, flash
 from flask_mysqldb import MySQL
 
 # create Flask application
@@ -16,3 +16,12 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # create MySQL instance
 mysql = MySQL(app)
+
+@app.route("/", methods = ["GET"])
+def index():
+    if request.method == "GET":
+        return render_template("index.html", title='HOME')
+    
+
+if __name__ == "__main__":
+    app.run(debug=True)

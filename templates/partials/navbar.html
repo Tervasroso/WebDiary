@@ -1,0 +1,18 @@
+<nav>
+  <h1 class="logo">WEB<span>DIARY</span></h1>
+  <p>AND OTHER COOL STUFF</p>
+  <ul>
+    <li><a href="/diary">Diary</a></li>
+    <li><a href="/news">News & Weather</a></li>
+    <li><a href="#footer">Contact us</a></li>
+  </ul>
+  <div>
+    {% if session['loggedin'] %}
+    <h5 class="username">{{session.username}}</h5>
+    <a href="/logout"><button type="Log out">Log out</button></a>
+    {% else %}
+    <a href="/login"><button type="Log in">Log in</button></a>
+    <a href="/register"><button type="Sign up">Sign up</button></a>
+    {% endif %}
+  </div>
+</nav>
