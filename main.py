@@ -95,6 +95,28 @@ def diary():
             flash("No diary entries")
             return render_template("diary.html", title='HOME')
 
+@app.route("/diary/create", methods=['GET','POST'])
+def insert():
+    if request.method == 'GET' and session['user_id']:
+        return render_template("create.html", title="CREATE")
+    elif request.method == 'POST':
+        # we are inside user_id session
+        user_id = session['user_id']
+        # input of date + heading + content
+        date = request.form['date']
+        heading = request.form['heading']
+        content = request.form['content']
+        # makes cursor & query
+        cur = mysql.connection.cursor()
+        sql = "INSERT INTO entries (user_id, date, heading, content) VALUES (%s, %s, %s, %s)"
+        params = (user_id, date, heading, content)
+        cur.execute(sql, params)
+        # commit changes to MySQL
+        mysql.connection.commit()
+        flash("Entry created")
+        # redirects user back to diary page
+        return redirect(url_for('diary'))
+
 
 @app.route('/logout')
 def logout():
