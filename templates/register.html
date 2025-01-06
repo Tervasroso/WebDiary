@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "/partials/head.html" %}
+
+  <body>
+    {% include "/partials/navbar.html" %}
+
+    <div class="register">
+      <form method="POST" action="/register">
+        <h1>Register</h1>
+        <br />
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="username"
+        /><br />
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="password"
+        /><br />
+        <label for="email">E-Mail:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="email"
+        /><br />
+        <button type="submit">Register</button>
+        <p class="bottom">
+          Already have an account?
+          <a class="bottom" href="{{url_for('login')}}"> Login here</a>
+        </p>
+      </form>
+    </div>
+    {% include "/partials/footer.html" %}
+  </body>
+</html>

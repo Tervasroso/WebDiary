@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- page view includes head.html -->
+  {% include "/partials/head.html" %}
+
+  <body>
+    <!-- shows navbar.html on top + possible flash message-->
+    {% include "/partials/navbar.html" %} {% with messages =
+    get_flashed_messages() %} {% if messages %} {% for msg in messages %}
+    <!-- managing style for flash message -->
+    <p style="color: green"><b>{{msg}}</b></p>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="login">
+      <form method="POST" action="/login">
+        <!-- header for Log In page -->
+        <h1>Log In</h1>
+        <br />
+        <!-- label and input field for Username -->
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="username"
+        /><br />
+        <!-- label and input field for Password -->
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="password"
+        /><br />
+        <!-- create Button "Log In" -->
+        <button type="submit">Log In</button>
+        <!-- create "Don't have an account" & link "Register" -->
+        <p class="bottom">
+          Dont't have an account?
+          <a class="bottom" href="{{url_for('register')}}"> Register here</a>
+        </p>
+      </form>
+    </div>
+    <!-- page should include footer.html , as usual -->
+    {% include "/partials/footer.html" %}
+  </body>
+</html>

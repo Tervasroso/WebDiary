@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include ('./partials/head.html') %}
+  <body>
+    {% include ('./partials/navbar.html') %}
+
+    <div class="details content">
+      <h2>{{entry.date}}</h2>
+      <div>
+        <p>{{entry.heading}}</p>
+        <p>{{entry.content}}</p>
+      </div>
+      <a href="{{url_for('delete', id=entry.id)}}" class="delete"
+        ><button>Delete</button></a
+      >
+      <a href="{{url_for('update', id=entry.id)}}" class="update"
+        ><button>Update</button></a
+      >
+    </div>
+    {% include ('./partials/footer.html') %}
+  </body>
+</html>

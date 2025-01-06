@@ -1,0 +1,21 @@
+<body>
+  <div class="content">
+    <h2>All Entries</h2>
+    <!-- shows possible flash message-->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <!-- managing style for flash message -->
+    <p style="color: green"><b>{{msg}}</b></p>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- button "Make new entry" -->
+    <a class="newEntry" href="/diary/create"><button>Make new entry</button></a
+    ><br />
+    <!-- create LOOP for entries from database -->
+    {% for entry in data %}
+    <!-- show results for date, heading and content -->
+    <p class="date">{{entry.date}}</p>
+    <h4 class="heading"><a href="/diary/{{entry.id}}">{{entry.heading}}</a></h4>
+    <p class="content">{{entry.content}}</p>
+    {% endfor %}
+  </div>
+</body>
