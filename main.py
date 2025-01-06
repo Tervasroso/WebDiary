@@ -76,6 +76,25 @@ def index():
     if request.method == "GET":
         return render_template("index.html", title='HOME')
 
+@app.route("/diary", methods = ["GET"])
+def diary():
+    if request.method == "GET" and session['user_id']:
+        ide = session['user_id']
+        cur = mysql.connection.cursor()
+        sql = "SELECT * FROM entries WHERE user_id =%s"
+        param = [ide]
+        cur.execute(sql, param)
+        # create data variable for database entries
+        data = cur.fetchall()
+        # deactivate cursor 
+        cur.close()
+        # if data is found
+        if data:
+            return render_template("diary.html", data = data, title='HOME')
+        else:
+            flash("No diary entries")
+            return render_template("diary.html", title='HOME')
+
 
 @app.route('/logout')
 def logout():
