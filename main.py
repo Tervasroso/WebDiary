@@ -117,6 +117,17 @@ def insert():
         # redirects user back to diary page
         return redirect(url_for('diary'))
 
+@app.route("/diary/<id>", methods = ["GET"])
+def show_entry(id):
+    if request.method == 'GET' and session['user_id']:
+        cur = mysql.connection.cursor()
+        sql = "SELECT * FROM entries WHERE id =%s"
+        param = [id]
+        cur.execute(sql, param)
+        # open single specific entry
+        entry = cur.fetchone()
+        return render_template("partials/entry.html", entry = entry, title="ENTRY")
+
 
 @app.route('/logout')
 def logout():
