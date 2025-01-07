@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include("./partials/head.html") %}
+
+  <body>
+    {% include("./partials/navbar.html") %}
+
+    <div class="create">
+      <form method="POST" action="/diary/update/{{data.id}}">
+        <label for="date">Date:</label>
+        <input
+          type="text"
+          id="date"
+          name="date"
+          required
+          value="{{data.date}}"
+        />
+        <label for="heading">Heading:</label>
+        <input
+          type="text"
+          id="heading"
+          name="heading"
+          required
+          value="{{data.heading}}"
+        />
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required>
+{{data.content}}</textarea
+        >
+        <a href="{{url_for('update', id=data.id)}}" class="update"
+          ><button>Update</button></a
+        >
+      </form>
+    </div>
+  </body>
+</html>
