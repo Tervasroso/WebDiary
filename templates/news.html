@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "/partials/head.html" %}
+
+  <body>
+    {% include "/partials/navbar.html" %}
+    <div class="news">
+      <h2>News</h2>
+      {% for news in data %}
+      <h3>{{ news.title }}</h3>
+      <p>{{ news.description }}</p>
+      <a href="{{news.link}}" class="news_link" target="_blank"
+        >{{ news.link }}</a
+      >
+      {% endfor %}
+    </div>
+    {% include "/partials/footer.html" %}
+  </body>
+</html>

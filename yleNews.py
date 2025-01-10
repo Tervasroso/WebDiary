@@ -14,12 +14,13 @@ def getNews():
     newsArticles = []
 
     for i in item:
+
         title = i.find('title').text
+        description = i.find('description').text
         link = i.find('link').text
-        desc = i.find('description').text
 
-        article = [title, link, desc]
+        article = {'title': title, 'description': description, 'link': link}
 
-    newsArticles.append(article)
+        newsArticles.append(article)
 
     return newsArticles[0:5]
