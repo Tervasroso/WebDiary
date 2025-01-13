@@ -9,6 +9,13 @@ def startSession(user):
     session['username'] = user['username']
     session['email'] = user['email']
 
+def stopSession():
+
+    session.pop('loggedin', None)
+    session.pop('user_id', None)
+    session.pop('username', None)
+    session.pop('email', None)
+
 def readDiary(form): # This function registers user to database
     
     username = request.form['username']
