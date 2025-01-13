@@ -24,6 +24,8 @@ mysql = MySQL(app)
 def register():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form :
         readDiary(request.form)
+        # redirects user to login page
+        return redirect(url_for('login'))
     elif request.method == 'GET':
         return render_template("register.html", title='REGISTER')
 
