@@ -3,7 +3,7 @@ import bcrypt
 from flask_mysqldb import MySQL
 from functions import *
 from yleNews import getNews
-
+from database import *
 # create Flask application
 app = Flask(__name__)
 
@@ -23,22 +23,7 @@ mysql = MySQL(app)
 @app.route('/register', methods =['GET', 'POST'])   # mapping the URLs to a specific function "register" that will handle the logic for that URL
 def register():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form :
-        username = request.form['username']
-        # password is encoded to bytes for hashing
-        password = request.form['password'].encode("utf-8")
-        email = request.form['email']
-        # create hashed (encrypted) password
-        hashed = bcrypt.hashpw(password, bcrypt.gensalt())
-        # create cursor for SQL query
-        cur = mysql.connection.cursor()
-        sql = 'INSERT INTO user VALUES (%s, %s, %s, %s)'
-        params = ('', username, hashed, email)
-        cur.execute(sql, params)
-        mysql.connection.commit()
-        # creates message to HTML page
-        flash("Successful registration")
-        # redirects user to login page
-        return redirect(url_for('login'))
+        readDiary(request.form)
     elif request.method == 'GET':
         return render_template("register.html", title='REGISTER')
 
