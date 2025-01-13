@@ -2,7 +2,7 @@ from main import mysql
 from flask import request, redirect, flash, url_for, render_template
 import bcrypt
 
-def readDiary(form):
+def readDiary(form): # This function registers user to database
     
     username = request.form['username']
     # password is encoded to bytes for hashing
@@ -18,5 +18,17 @@ def readDiary(form):
     mysql.connection.commit()
     # creates message to HTML page
     flash("Successful registration")
+
+def logIn():
+    
+    username = request.form['username']
+    password = request.form['password'].encode("utf-8")
+    cur = mysql.connection.cursor()
+    sql = 'SELECT * FROM user WHERE username = %s'
+    param = [username]
+    cur.execute(sql, param)
+    user = cur.fetchone()
+    return user
+
     
     

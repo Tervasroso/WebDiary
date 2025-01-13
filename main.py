@@ -32,16 +32,18 @@ def register():
 @app.route('/login', methods =['GET', 'POST'])
 def login():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        username = request.form['username']
-        password = request.form['password'].encode("utf-8")
-        cur = mysql.connection.cursor()
-        sql = 'SELECT * FROM user WHERE username = %s'
-        param = [username]
-        cur.execute(sql, param)
+        # username = request.form['username']
+        # password = request.form['password'].encode("utf-8")
+        # cur = mysql.connection.cursor()
+        # sql = 'SELECT * FROM user WHERE username = %s'
+        # param = [username]
+        # cur.execute(sql, param)
         # create user variable for user information from MySQL database
-        user = cur.fetchone()
+        user = logIn()
+        password = request.form['password'].encode("utf-8")
         # create res variable and transform user (dictionary) to iterable sequence of key-value pairs 
         res = list(user.items())
+        print(res)
         # create hash_pass variable witch stores password 
         hash_pass = res[2][1].encode("utf-8")
         # if user exists and password is correct
