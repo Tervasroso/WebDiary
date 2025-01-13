@@ -1,6 +1,13 @@
 from main import mysql
-from flask import request, redirect, flash, url_for, render_template
+from flask import request, redirect, flash, url_for, render_template, session
 import bcrypt
+
+def startSession(user):
+
+    session['loggedin'] = True
+    session['user_id'] = user['user_id']
+    session['username'] = user['username']
+    session['email'] = user['email']
 
 def readDiary(form): # This function registers user to database
     

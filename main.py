@@ -49,10 +49,11 @@ def login():
         # if user exists and password is correct
         if user and bcrypt.checkpw(password, hash_pass):
             # session is started with listed below parameters:
-            session['loggedin'] = True
-            session['user_id'] = user['user_id']
-            session['username'] = user['username']
-            session['email'] = user['email']
+            # session['loggedin'] = True
+            # session['user_id'] = user['user_id']
+            # session['username'] = user['username']
+            # session['email'] = user['email']
+            startSession(user)
             flash("You are logged in")
             return render_template('index.html')
         else:
