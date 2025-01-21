@@ -32,12 +32,6 @@ def register():
 @app.route('/login', methods =['GET', 'POST'])
 def login():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        # username = request.form['username']
-        # password = request.form['password'].encode("utf-8")
-        # cur = mysql.connection.cursor()
-        # sql = 'SELECT * FROM user WHERE username = %s'
-        # param = [username]
-        # cur.execute(sql, param)
         # create user variable for user information from MySQL database
         user = logIn()
         password = request.form['password'].encode("utf-8")
@@ -48,11 +42,6 @@ def login():
         hash_pass = res[2][1].encode("utf-8")
         # if user exists and password is correct
         if user and bcrypt.checkpw(password, hash_pass):
-            # session is started with listed below parameters:
-            # session['loggedin'] = True
-            # session['user_id'] = user['user_id']
-            # session['username'] = user['username']
-            # session['email'] = user['email']
             startSession(user)
             flash("You are logged in")
             return render_template('index.html')
@@ -70,10 +59,10 @@ def index():
 @app.route("/diary", methods = ["GET"])
 def diary():
     if request.method == "GET" and session['user_id']:
-        ide = session['user_id']
+        id = session['user_id']
         cur = mysql.connection.cursor()
         sql = "SELECT * FROM entries WHERE user_id =%s"
-        param = [ide]
+        param = [id]
         cur.execute(sql, param)
         # create data variable for database entries
         data = cur.fetchall()

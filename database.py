@@ -4,6 +4,7 @@ import bcrypt
 
 def startSession(user):
 
+    # Session is started with the parameters listed below
     session['loggedin'] = True
     session['user_id'] = user['user_id']
     session['username'] = user['username']
