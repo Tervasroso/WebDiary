@@ -35,10 +35,8 @@ def login():
         # create user variable for user information from MySQL database
         user = logIn()
         password = request.form['password'].encode("utf-8")
-        # create res variable and transform user (dictionary) to iterable sequence of key-value pairs 
+        # create hash_pass variable witch stores password
         res = list(user.items())
-        print(res)
-        # create hash_pass variable witch stores password 
         hash_pass = res[2][1].encode("utf-8")
         # if user exists and password is correct
         if user and bcrypt.checkpw(password, hash_pass):
