@@ -173,10 +173,6 @@ def delete(id):
 
 @app.route('/logout')
 def logout():
-    # session.pop('loggedin', None)
-    # session.pop('user_id', None)
-    # session.pop('username', None)
-    # session.pop('email', None)
     stopSession()
     return redirect(url_for('login'))
 

@@ -18,10 +18,10 @@ def stopSession():
 
 def readDiary(form): # This function registers user to database
     
-    username = request.form['username']
+    username = form['username']
     # password is encoded to bytes for hashing
-    password = request.form['password'].encode("utf-8")
-    email = request.form['email']
+    password = form['password'].encode("utf-8")
+    email = form['email']
     # create hashed (encrypted) password
     hashed = bcrypt.hashpw(password, bcrypt.gensalt())
     # create cursor for SQL query
