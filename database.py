@@ -16,7 +16,7 @@ def stopSession():
     session.pop('username', None)
     session.pop('email', None)
 
-def readDiary(form): # This function registers user to database
+def registerUser(form): # This function registers user to database
     
     username = form['username']
     # password is encoded to bytes for hashing

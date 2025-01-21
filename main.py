@@ -23,7 +23,7 @@ mysql = MySQL(app)
 @app.route('/register', methods =['GET', 'POST'])   # mapping the URLs to a specific function "register" that will handle the logic for that URL
 def register():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form :
-        readDiary(request.form)
+        registerUser(request.form)
         # redirects user to login page
         return redirect(url_for('login'))
     elif request.method == 'GET':
