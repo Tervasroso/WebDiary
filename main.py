@@ -58,14 +58,7 @@ def index():
 def diary():
     if request.method == "GET" and session['user_id']:
         id = session['user_id']
-        cur = mysql.connection.cursor()
-        sql = "SELECT * FROM entries WHERE user_id =%s"
-        param = [id]
-        cur.execute(sql, param)
-        # create data variable for database entries
-        data = cur.fetchall()
-        # deactivate cursor 
-        cur.close()
+        data = readDiary(id)
         # if data is found
         if data:
             return render_template("diary.html", data = data, title='HOME')

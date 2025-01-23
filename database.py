@@ -45,6 +45,17 @@ def logIn():
     user = cur.fetchone()
     return user
 
+def readDiary(id):
+
+    cur = mysql.connection.cursor()
+    sql = "SELECT * FROM entries WHERE user_id =%s"
+    param = [id]
+    cur.execute(sql, param)
+    # create data variable for database entries
+    data = cur.fetchall()
+    # deactivate cursor 
+    cur.close()
+    return data
 
     
     
