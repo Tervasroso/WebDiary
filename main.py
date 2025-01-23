@@ -90,25 +90,12 @@ def update(id):
         return render_template("partials/update.html", data = data, title="UPDATE")
     elif request.method == 'POST' and session['user_id']:    
         # updated data 
-        cur = mysql.connection.cursor()
-        sql ="SELECT * FROM entries WHERE id =%s"
-        param = [id]
-        cur.execute(sql, param)
-        data = cur.fetchone()
-        date = request.form['date']
-        heading = request.form['heading']
-        content = request.form['content']
-        cur = mysql.connection.cursor()
-        sql = "UPDATE entries SET date = %s, heading= %s, content= %s WHERE id= %s"
-        params = (date, heading, content, id)
-        if data['user_id'] == session['user_id']:
-            cur.execute(sql, params)
-            mysql.connection.commit()
-            flash("Entry updated")
-            return redirect(url_for('diary'))
-        else:
-            flash("permission denied")
-            return redirect(url_for('diary'))
+        updateOne(id)
+        flash("Entry updated")
+        return redirect(url_for('diary'))
+    else:
+        flash("permission denied")
+        return redirect(url_for('diary'))
 
 @app.route("/diary/delete/<id>", methods=['GET'])
 def delete(id):

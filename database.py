@@ -91,3 +91,19 @@ def readOne(id):
     data = cur.fetchone()
     return data
 
+def updateOne(id):
+
+    cur = mysql.connection.cursor()
+    sql ="SELECT * FROM entries WHERE id =%s"
+    param = [id]
+    cur.execute(sql, param)
+    data = cur.fetchone()
+    date = request.form['date']
+    heading = request.form['heading']
+    content = request.form['content']
+    cur = mysql.connection.cursor()
+    sql = "UPDATE entries SET date = %s, heading= %s, content= %s WHERE id= %s"
+    params = (date, heading, content, id)
+    if data['user_id'] == session['user_id']:
+            cur.execute(sql, params)
+            mysql.connection.commit()
