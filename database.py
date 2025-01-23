@@ -71,5 +71,22 @@ def readDiary(id):
     cur.close()
     return data
 
-    
-    
+def showEntry(id):
+
+    cur = mysql.connection.cursor()
+    sql = "SELECT * FROM entries WHERE id =%s"
+    param = [id]
+    cur.execute(sql, param)
+    # open single specific entry
+    entry = cur.fetchone()
+    return entry
+
+def readOne(id):
+
+    cur = mysql.connection.cursor()
+    sql ="SELECT * FROM entries WHERE id =%s"
+    param = [id]
+    cur.execute(sql, param)
+    # open single specific entry for update 
+    data = cur.fetchone()
+    return data

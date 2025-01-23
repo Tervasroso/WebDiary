@@ -71,7 +71,6 @@ def insert():
     if request.method == 'GET' and session['user_id']:
         return render_template("create.html", title="CREATE")
     elif request.method == 'POST':
-        # we are inside user_id session
         user_id = session['user_id']
         writeEntry(user_id)
         flash("Entry created")
@@ -81,23 +80,13 @@ def insert():
 @app.route("/diary/<id>", methods = ["GET"])
 def show_entry(id):
     if request.method == 'GET' and session['user_id']:
-        cur = mysql.connection.cursor()
-        sql = "SELECT * FROM entries WHERE id =%s"
-        param = [id]
-        cur.execute(sql, param)
-        # open single specific entry
-        entry = cur.fetchone()
+        entry = showEntry(id)
         return render_template("partials/entry.html", entry = entry, title="ENTRY")
 
 @app.route("/diary/update/<id>", methods=['GET','POST'])
 def update(id):
     if request.method == 'GET' and session['user_id']:
-        cur = mysql.connection.cursor()
-        sql ="SELECT * FROM entries WHERE id =%s"
-        param = [id]
-        cur.execute(sql, param)
-        # open single specific entry for update 
-        data = cur.fetchone()
+        data = readOne(id)
         return render_template("partials/update.html", data = data, title="UPDATE")
     elif request.method == 'POST' and session['user_id']:    
         # updated data 
