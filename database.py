@@ -107,3 +107,19 @@ def updateOne(id):
     if data['user_id'] == session['user_id']:
             cur.execute(sql, params)
             mysql.connection.commit()
+
+def deleteOne(id):
+
+    cur = mysql.connection.cursor()
+    sql ="SELECT * FROM entries WHERE id =%s"
+    param = [id]
+    cur.execute(sql, param)
+    data = cur.fetchone()
+    # delete specific entry according to entry id 
+    if data['user_id'] == session['user_id']:
+        sql2 = "DELETE FROM entries WHERE id = %s"
+        param2 = [id]
+        cur.execute(sql2, param2)
+        mysql.connection.commit()
+
+
