@@ -45,6 +45,20 @@ def logIn():
     user = cur.fetchone()
     return user
 
+def writeEntry(user_id):
+
+    # input of date + heading + content
+    date = request.form['date']
+    heading = request.form['heading']
+    content = request.form['content']
+    # makes cursor & query
+    cur = mysql.connection.cursor()
+    sql = "INSERT INTO entries (user_id, date, heading, content) VALUES (%s, %s, %s, %s)"
+    params = (user_id, date, heading, content)
+    cur.execute(sql, params)
+    # commit changes to MySQL
+    mysql.connection.commit()
+
 def readDiary(id):
 
     cur = mysql.connection.cursor()

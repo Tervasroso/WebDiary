@@ -73,17 +73,7 @@ def insert():
     elif request.method == 'POST':
         # we are inside user_id session
         user_id = session['user_id']
-        # input of date + heading + content
-        date = request.form['date']
-        heading = request.form['heading']
-        content = request.form['content']
-        # makes cursor & query
-        cur = mysql.connection.cursor()
-        sql = "INSERT INTO entries (user_id, date, heading, content) VALUES (%s, %s, %s, %s)"
-        params = (user_id, date, heading, content)
-        cur.execute(sql, params)
-        # commit changes to MySQL
-        mysql.connection.commit()
+        writeEntry(user_id)
         flash("Entry created")
         # redirects user back to diary page
         return redirect(url_for('diary'))
