@@ -90,3 +90,4 @@ def readOne(id):
     # open single specific entry for update 
     data = cur.fetchone()
     return data
+
