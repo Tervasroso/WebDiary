@@ -15,3 +15,4 @@ This was planned to be operated from laptop, so this is not responsive. For the 
 For the database. see pic.
 
 
+![database](https://github.com/user-attachments/assets/0ada668b-8b24-4164-8eeb-567788cc98c2)
