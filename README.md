@@ -9,3 +9,7 @@ This was planned to be operated from laptop, so this is not responsive. For the 
 ## Tech used
 ### Python with Flask web-framework
 ### mySql database. I used xampp, because it was known to me and i had used it before.
+
+## How to run
+
+For the database. see pic.
