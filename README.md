@@ -13,3 +13,5 @@ This was planned to be operated from laptop, so this is not responsive. For the 
 ## How to run
 
 For the database. see pic.
+
+
