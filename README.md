@@ -12,7 +12,7 @@ This was planned to be operated from laptop, so this is not responsive. For the 
 
 ## How to run
 
-For the database.
+For the database. 2 tables are needed.
 
 
 ![database](https://github.com/user-attachments/assets/0ada668b-8b24-4164-8eeb-567788cc98c2)
