@@ -1,6 +1,7 @@
 from main import mysql
 from flask import request, redirect, flash, url_for, render_template, session
 import bcrypt
+import datetime
 
 def startSession(user):
 
@@ -99,6 +100,7 @@ def updateOne(id):
     cur.execute(sql, param)
     data = cur.fetchone()
     date = request.form['date']
+    #date = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%d-%m-%Y") to flip dateS
     heading = request.form['heading']
     content = request.form['content']
     cur = mysql.connection.cursor()

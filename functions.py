@@ -1,1 +1,4 @@
 
+def flipDate(date):
+    
+    pass
