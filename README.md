@@ -7,7 +7,7 @@
 
 ## How to run
 
-### In this project you need SQL Database with two tables.
+### In this project you need SQL Database with two tables. I used xampp, because it was know to me and i have used it succesfully before.
 
 ![database](https://github.com/user-attachments/assets/91a8a247-aa47-410e-9dc9-11ced396d53d)
 
